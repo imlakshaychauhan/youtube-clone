@@ -1,11 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
   const handleToggleMenu = () => dispatch(toggleMenu());
-  
+
   return (
     <div className="flex m-1 justify-between shadow-lg p-3 rounded-2xl">
       <div className="my-auto flex">
@@ -17,13 +18,16 @@ const Header = () => {
           alt=""
           src="https://icons.veryicon.com/png/o/miscellaneous/linear-icon-45/hamburger-menu-5.png"
         />
-        <img
-          className="ml-6 p-3"
-          width="140"
-          height="45"
-          alt=""
-          src="https://vectorseek.com/wp-content/uploads/2021/01/YouTube-Logo-Vector.png"
-        />
+        <Link to="/">
+          <img
+            // onClick={() => handleToggleMenu()}
+            className="ml-6 p-3 cursor-pointer"
+            width="140"
+            height="45"
+            alt=""
+            src="https://vectorseek.com/wp-content/uploads/2021/01/YouTube-Logo-Vector.png"
+          />
+        </Link>
       </div>
       <div className="my-auto flex text-center h-12">
         <input
