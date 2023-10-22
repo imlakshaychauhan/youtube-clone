@@ -8,8 +8,8 @@ const Body = () => {
     <>
     <Header />
     <div className="flex">
-    <Sidebar />
-    <Outlet />
+      <Sidebar />
+      <Outlet />
     </div>
     </>
   )
