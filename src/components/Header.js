@@ -1,11 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { Link } from "react-router-dom";
+import { YOUTUBE_SEARCH_API_URL } from "../utils/constants";
 
 const Header = () => {
   const dispatch = useDispatch();
   const handleToggleMenu = () => dispatch(toggleMenu());
+  const [searchText, setSearchText] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => getSuggestions(), 200);
+    return () => {clearTimeout(timer); };
+  }, [searchText]);
+
+  const getSuggestions = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": process.env.REACT_APP_SUGGESTION_KEY,
+      },
+    };
+
+    try {
+      const response = await fetch(
+        YOUTUBE_SEARCH_API_URL + searchText,
+        options
+      );
+      const result = await response.json();
+      // console.log(result);
+      if (searchText !== "") setSuggestions(result);
+      else setSuggestions([]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="flex m-1 justify-between shadow-lg p-3 rounded-2xl">
@@ -20,7 +51,6 @@ const Header = () => {
         />
         <Link to="/">
           <img
-            // onClick={() => handleToggleMenu()}
             className="ml-6 p-3 cursor-pointer"
             width="140"
             height="45"
@@ -29,10 +59,14 @@ const Header = () => {
           />
         </Link>
       </div>
-      <div className="my-auto flex text-center h-12">
+      <div className="my-auto flex h-12">
         <input
           className="text-lg p-2 pl-4 border border-gray-300 font-normal rounded-l-full w-60"
           placeholder="Search"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          onFocus={() => setShowSuggestions(true)}
+          onBlur={() => setShowSuggestions(false)}
         />
         <button className="p-2 border border-gray-300 rounded-r-full w-20">
           <img
@@ -43,7 +77,18 @@ const Header = () => {
             src="https://cdn-icons-png.flaticon.com/512/49/49116.png"
           />
         </button>
+        <div className="absolute mt-16 shadow-lg w-80 bg-white rounded-lg">
+          <ul>
+            {showSuggestions &&
+              suggestions.map((suggestion) => (
+                <li className="py-2 pl-4 text-xl hover:bg-gray-200 cursor-pointer">
+                  {suggestion}
+                </li>
+              ))}
+          </ul>
+        </div>
       </div>
+
       <div className="my-auto flex">
         <img
           className="p-2"
