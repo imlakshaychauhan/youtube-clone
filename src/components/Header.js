@@ -78,7 +78,7 @@ const Header = () => {
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => setShowSuggestions(false)}
         />
-        <button className="p-2 border border-gray-300 rounded-r-full w-20">
+        <button className="p-2 border bg-gray-50 hover:bg-gray-100 rounded-r-full w-20">
           <img
             className="p-1 mx-auto mb-4"
             width="30"
@@ -101,14 +101,14 @@ const Header = () => {
 
       <div className="my-auto flex">
         <img
-          className="p-2"
+          className="p-2 cursor-pointer"
           width="50"
           height="20"
           alt=""
           src="https://freeiconshop.com/wp-content/uploads/edd/notification-outline.png"
         />
         <img
-          className="p-2"
+          className="ml-3 p-2 cursor-pointer"
           width="50"
           height="50"
           alt=""

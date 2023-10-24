@@ -7,7 +7,7 @@ const VideoCard = ({ video }) => {
 
   return (
     <Link to={`/watch?v=${video.id}`}>
-      <div className="w-72 m-2 rounded-lg">
+      <div className="w-72 m-2 rounded-lg hover:bg-gray-100">
         <img className="rounded-lg" alt="" src={thumbnails.medium.url} />
         <div className="p-2">
           <div className="flex">
