@@ -77,11 +77,11 @@ const Header = () => {
             src="https://cdn-icons-png.flaticon.com/512/49/49116.png"
           />
         </button>
-        <div className="absolute mt-16 shadow-lg w-80 bg-white rounded-lg">
+        <div className="absolute mt-16 shadow-lg w-80 bg-white rounded-xl">
           <ul>
             {showSuggestions &&
               suggestions.map((suggestion) => (
-                <li className="py-2 pl-4 text-xl hover:bg-gray-200 cursor-pointer">
+                <li className="py-2 pl-4 text-xl hover:bg-gray-200 cursor-pointer border border-t-1">
                   {suggestion}
                 </li>
               ))}
