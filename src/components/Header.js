@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { Link } from "react-router-dom";
 import { YOUTUBE_SEARCH_API_URL } from "../utils/constants";
+import {cacheResults} from "../utils/searchSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -10,9 +11,13 @@ const Header = () => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const searchCache = useSelector(store => store.search);
 
   useEffect(() => {
-    const timer = setTimeout(() => getSuggestions(), 200);
+    const timer = setTimeout(() => {
+      if(searchCache[searchText]) setSuggestions(searchCache[searchText]);
+      else getSuggestions();
+    }, 200);
     return () => {clearTimeout(timer); };
   }, [searchText]);
 
@@ -31,7 +36,12 @@ const Header = () => {
       );
       const result = await response.json();
       // console.log(result);
-      if (searchText !== "") setSuggestions(result);
+      if (searchText !== "") {
+        setSuggestions(result);
+        dispatch(cacheResults({
+          [searchText]: result
+        }))
+      }
       else setSuggestions([]);
     } catch (error) {
       console.error(error);
@@ -80,8 +90,8 @@ const Header = () => {
         <div className="absolute mt-16 shadow-lg w-80 bg-white rounded-xl">
           <ul>
             {showSuggestions &&
-              suggestions.map((suggestion) => (
-                <li className="py-2 pl-4 text-xl hover:bg-gray-200 cursor-pointer border border-t-1">
+              suggestions.map((suggestion, index) => (
+                <li key={index} className="py-2 pl-4 text-xl hover:bg-gray-200 cursor-pointer border border-t-1">
                   {suggestion}
                 </li>
               ))}
