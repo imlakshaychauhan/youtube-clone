@@ -101,7 +101,7 @@ const Comment = ({ comment }) => {
         alt="Logo"
         src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"
       />
-      <div className="ml-2">
+      <div className="ml-3">
         <h1 className="font-bold text-xl">{comment.name}</h1>
         <h1 className="text-lg">{comment.comment}</h1>
       </div>
@@ -113,7 +113,7 @@ const CommentsList = ({ comments }) => {
   return comments.map((comment) => (
     <>
       <Comment comment={comment} />
-      <div className="ml-5 border-l-gray-400 border-l-2">
+      <div className="ml-5 border-l-gray-500 border-l-2">
         <CommentsList comments={comment.replies} />
       </div>
     </>
