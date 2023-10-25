@@ -4,6 +4,7 @@ import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import { YOUTUBE_ID_API_URL } from "../utils/constants";
 import CommentsContainer from "./CommentsContainer";
+import LiveChat from "./LiveChat";
 
 const WatchPage = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,8 @@ const WatchPage = () => {
   };
 
   return (
-    <div>
+    <div className="w-full">
+      <div className="flex w-full">
       <div className="mt-8 ml-20">
         <iframe
           className="rounded-lg w-[75rem] h-[38rem]"
@@ -69,6 +71,10 @@ const WatchPage = () => {
             </div>
           </>
         )}
+      </div>
+      <div className="mt-8 ml-3 w-full">
+        <LiveChat />
+      </div>
       </div>
       <div className="mt-10 ml-20 w-[75rem] h-[38rem] max-w-w-[75rem]">
         <h1 className="text-3xl font-bold">Comments:</h1>
