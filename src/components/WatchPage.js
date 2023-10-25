@@ -37,7 +37,7 @@ const WatchPage = () => {
         ></iframe>
         {videoDetails.length === 0 ? null : (
           <>
-            <p className="my-5 font-semibold text-2xl"> {videoDetails.items[0].snippet.title} </p>
+            <p className="my-5 font-semibold text-[20px]"> {videoDetails.items[0].snippet.title} </p>
 
             <div className="flex align-middle justify-between">
               <div className="flex">
@@ -49,20 +49,20 @@ const WatchPage = () => {
               <button className="ml-8 bg-black text-white px-5 py-3 text-lg font-bold rounded-full hover:bg-gray-700"> Subscribe </button>
               </div>
               <div className="flex">
-              <button className="bg-gray-100 ml-10 p-3 rounded-l-full font-semibold text-lg flex border-r border-r-gray-300  hover:bg-gray-200">
+              <button className="bg-gray-100 ml-10 p-3 rounded-l-full font-semibold text-lg flex border-r border-r-gray-300  hover:bg-gray-200 items-center">
                 <img className="w-7 h-7 mr-1 text-black" alt="" src="thumbs-up.png" />
                 {videoDetails.items[0].statistics.likeCount}
               </button>
-              <button className="bg-gray-100 p-3 rounded-r-full font-semibold text-lg flex hover:bg-gray-200">
+              <button className="bg-gray-100 p-3 rounded-r-full font-semibold text-lg flex hover:bg-gray-200 items-center">
                 <img className="w-6 h-6 mr-1 text-black" alt="" src="thumbs-down.png" />
               </button>
-              <button className="bg-gray-100 p-3 rounded-full font-semibold text-lg flex ml-4 hover:bg-gray-200">
+              <button className="bg-gray-100 p-3 rounded-full font-semibold text-lg flex ml-4 hover:bg-gray-200 items-center">
                 <img className="w-6 h-6 mr-1 text-black" alt="" src="forward.png" />Share
               </button>
-              <button className="bg-gray-100 p-3 rounded-full font-semibold text-lg flex ml-4 hover:bg-gray-200">
+              <button className="bg-gray-100 p-3 rounded-full font-semibold text-lg flex ml-4 hover:bg-gray-200 items-center">
                 <img className="w-5 h-5 mr-1 text-black" alt="" src="download.png" />Download
               </button>
-              <button className="bg-gray-100 p-3 rounded-full font-semibold text-lg flex text-center ml-4 hover:bg-gray-200">
+              <button className="bg-gray-100 p-3 rounded-full font-semibold text-lg flex text-center ml-4 hover:bg-gray-200 items-center">
                 <img className="w-6 h-6 text-black" alt="" src="more.png" />
               </button>
               </div>
