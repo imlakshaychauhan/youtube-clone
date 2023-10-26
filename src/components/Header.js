@@ -4,7 +4,6 @@ import { toggleMenu } from "../utils/appSlice";
 import { Link } from "react-router-dom";
 import { YOUTUBE_SEARCH_API_URL } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
-import Suggestion from "./Suggestion";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -75,7 +74,7 @@ const Header = () => {
       </div>
       <div className="my-auto flex h-12">
         <input
-          className="text-lg p-2 pl-4 border border-gray-300 font-normal rounded-l-full w-60"
+          className="text-lg p-2 pl-4 border border-gray-300 font-normal rounded-l-full w-[35rem]"
           placeholder="Search"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
@@ -95,7 +94,7 @@ const Header = () => {
             />
           </Link>
         </button>
-        <div className="absolute mt-16 shadow-lg w-80 bg-white rounded-xl">
+        <div className="absolute mt-16 shadow-lg w-[35rem] bg-white rounded-xl">
           {showSuggestions &&
             suggestions.map((suggestion, index) => (
               <p

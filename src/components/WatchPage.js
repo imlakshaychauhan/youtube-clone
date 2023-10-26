@@ -32,7 +32,7 @@ const WatchPage = () => {
       <div className="mt-8 ml-10">
         <iframe
           className="rounded-lg w-[75rem] h-[38rem]"
-          src={"https://www.youtube.com/embed/" + searchParams.get("v")}
+          src={"https://www.youtube.com/embed/" + searchParams.get("v") + "?autoplay=1&mute=1"}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen

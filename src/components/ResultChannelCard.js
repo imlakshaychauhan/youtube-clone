@@ -12,7 +12,7 @@ const ResultChannelCard = ({ video }) => {
       <div className="flex flex-col ml-10">
       <p className="font-semibold text-[20px]">{video.snippet.channelTitle}</p>
       <p>2.10M subscribers</p>
-      <p>{video.snippet.description}</p>
+      <p>{video.snippet.description.substr(0, 50).concat("...")}</p>
       </div>
       <div className="end-0">
       <button className="ml-8 bg-black text-white px-5 py-3 text-lg font-bold rounded-full hover:bg-gray-700"> Subscribe </button>

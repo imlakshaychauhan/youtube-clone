@@ -16,7 +16,7 @@ const Results = () => {
         YOUTUBE_RESULTS_API_URL + searchParams.get("search_query")
       );
       const data = await response.json();
-      // console.log(data.items);
+      console.log(data.items);
       setVideos(data.items);
     } catch (err) {
       alert.log(err);

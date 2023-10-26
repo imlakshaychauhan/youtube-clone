@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {formatNumberToYoutubeViews} from "../utils/helper"
 
 const VideoCard = ({ video }) => {
   const { title, channelTitle, thumbnails } = video.snippet;
@@ -19,7 +20,7 @@ const VideoCard = ({ video }) => {
             <p className="font-bold ml-2">{title.substr(0, 40).concat("...")}</p>
           </div>
           <p className="ml-8 text-gray-600 text-md">{channelTitle}</p>
-          <p className="ml-8 text-gray-600 text-md">{viewCount} views</p>
+          <p className="ml-8 text-gray-600 text-md">{formatNumberToYoutubeViews(viewCount)} views</p>
         </div>
       </div>
     </Link>
