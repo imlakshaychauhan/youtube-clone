@@ -29,7 +29,7 @@ const WatchPage = () => {
   return (
     <div className="w-full">
       <div className="flex w-full">
-      <div className="mt-8 ml-20">
+      <div className="mt-8 ml-10">
         <iframe
           className="rounded-lg w-[75rem] h-[38rem]"
           src={"https://www.youtube.com/embed/" + searchParams.get("v")}
@@ -43,8 +43,8 @@ const WatchPage = () => {
 
             <div className="flex align-middle justify-between">
               <div className="flex">
-              <img className="w-12 h-12" alt="Channel Logo" src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" />
-              <div>
+              <img className="w-12 h-12 cursor-pointer" alt="Channel Logo" src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" />
+              <div className="cursor-pointer">
                 <p className="font-bold text-xl ml-4"> {videoDetails.items[0].snippet.channelTitle} </p>
                 <p className="text-md ml-4">9.8K subscribers</p>
               </div>
@@ -76,7 +76,7 @@ const WatchPage = () => {
         <LiveChat />
       </div>
       </div>
-      <div className="mt-10 ml-20 w-[75rem] h-[38rem] max-w-w-[75rem]">
+      <div className="mt-10 ml-10 w-[75rem] h-[38rem] max-w-w-[75rem]">
         <h1 className="text-3xl font-bold">Comments:</h1>
         <CommentsContainer />
       </div>
