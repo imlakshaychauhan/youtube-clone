@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { Link } from "react-router-dom";
 import { YOUTUBE_SEARCH_API_URL } from "../utils/constants";
-import {cacheResults} from "../utils/searchSlice";
+import { cacheResults } from "../utils/searchSlice";
+import Suggestion from "./Suggestion";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -11,14 +12,16 @@ const Header = () => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const searchCache = useSelector(store => store.search);
+  const searchCache = useSelector((store) => store.search);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if(searchCache[searchText]) setSuggestions(searchCache[searchText]);
+      if (searchCache[searchText]) setSuggestions(searchCache[searchText]);
       else getSuggestions();
     }, 200);
-    return () => {clearTimeout(timer); };
+    return () => {
+      clearTimeout(timer);
+    };
   }, [searchText]);
 
   const getSuggestions = async () => {
@@ -38,11 +41,12 @@ const Header = () => {
       // console.log(result);
       if (searchText !== "") {
         setSuggestions(result);
-        dispatch(cacheResults({
-          [searchText]: result
-        }))
-      }
-      else setSuggestions([]);
+        dispatch(
+          cacheResults({
+            [searchText]: result,
+          })
+        );
+      } else setSuggestions([]);
     } catch (error) {
       console.error(error);
     }
@@ -79,25 +83,28 @@ const Header = () => {
           onBlur={() => setShowSuggestions(false)}
         />
         <button className="p-2 border bg-gray-50 hover:bg-gray-100 rounded-r-full w-20">
-        <Link to= {(searchText !== "") ? "/results?search_query=" + searchText : "/"}>
-          <img
-            className="p-1 mx-auto mb-4"
-            width="30"
-            height="30"
-            alt=""
-            src="https://cdn-icons-png.flaticon.com/512/49/49116.png"
-          />
-        </Link>
+          <Link
+            to={searchText !== "" ? "/results?search_query=" + searchText : "/"}
+          >
+            <img
+              className="p-1 mx-auto mb-4"
+              width="30"
+              height="30"
+              alt=""
+              src="https://cdn-icons-png.flaticon.com/512/49/49116.png"
+            />
+          </Link>
         </button>
         <div className="absolute mt-16 shadow-lg w-80 bg-white rounded-xl">
-          <ul>
-            {showSuggestions &&
-              suggestions.map((suggestion, index) => (
-                <li key={index} className="py-2 pl-4 text-xl hover:bg-gray-200 cursor-pointer border border-t-1">
+          {showSuggestions &&
+            suggestions.map((suggestion, index) => (
+              <p
+                key={index}
+                className="w-full text-left py-2 pl-4 text-xl hover:bg-gray-200 cursor-pointer border border-t-1"
+              >
                   {suggestion}
-                </li>
-              ))}
-          </ul>
+              </p>
+            ))}
         </div>
       </div>
 

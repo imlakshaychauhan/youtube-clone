@@ -39,13 +39,13 @@ const WatchPage = () => {
         ></iframe>
         {videoDetails.length === 0 ? null : (
           <>
-            <p className="my-5 font-semibold text-[20px]"> {videoDetails.items[0].snippet.title} </p>
+            <p className="my-5 font-semibold text-[20px]"> {videoDetails?.items[0]?.snippet?.title} </p>
 
             <div className="flex align-middle justify-between">
               <div className="flex">
               <img className="w-12 h-12 cursor-pointer" alt="Channel Logo" src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" />
               <div className="cursor-pointer">
-                <p className="font-bold text-xl ml-4"> {videoDetails.items[0].snippet.channelTitle} </p>
+                <p className="font-bold text-xl ml-4"> {videoDetails?.items[0]?.snippet?.channelTitle} </p>
                 <p className="text-md ml-4">9.8K subscribers</p>
               </div>
               <button className="ml-8 bg-black text-white px-5 py-3 text-lg font-bold rounded-full hover:bg-gray-700"> Subscribe </button>
@@ -53,7 +53,7 @@ const WatchPage = () => {
               <div className="flex">
               <button className="bg-gray-100 ml-10 p-3 rounded-l-full font-semibold text-lg flex border-r border-r-gray-300  hover:bg-gray-200 items-center">
                 <img className="w-7 h-7 mr-1 text-black" alt="" src="thumbs-up.png" />
-                {videoDetails.items[0].statistics.likeCount}
+                {videoDetails?.items[0]?.statistics?.likeCount}
               </button>
               <button className="bg-gray-100 p-3 rounded-r-full font-semibold text-lg flex hover:bg-gray-200 items-center">
                 <img className="w-6 h-6 mr-1 text-black" alt="" src="thumbs-down.png" />
