@@ -79,6 +79,7 @@ const Header = () => {
           onBlur={() => setShowSuggestions(false)}
         />
         <button className="p-2 border bg-gray-50 hover:bg-gray-100 rounded-r-full w-20">
+        <Link to= {(searchText !== "") ? "/results?search_query=" + searchText : "/"}>
           <img
             className="p-1 mx-auto mb-4"
             width="30"
@@ -86,6 +87,7 @@ const Header = () => {
             alt=""
             src="https://cdn-icons-png.flaticon.com/512/49/49116.png"
           />
+        </Link>
         </button>
         <div className="absolute mt-16 shadow-lg w-80 bg-white rounded-xl">
           <ul>
