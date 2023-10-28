@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ResultVideoCard = ({ video }) => {
   return (
-    <Link to={"/watch?v=wcP-W5w6ELY" + video.id.videoId}>
+    <Link to={"/watch?v=" + video.id.videoId}>
       <div className="h-fit p-2 ml-10 mt-5 rounded-lg flex cursor-pointer">
         <div>
           <img
