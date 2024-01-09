@@ -72,12 +72,6 @@ Here is the link for demo - [YouTube Clone](https://yt-clone-namastereact.netlif
   - Adds `chatSlice` to the Redux store (e.g., `store.js`).
   - Enables the sending of custom messages within the live chat.
 
-## Planning
-
-### Project Overview
-
-![Project Overview](src/images/planning.png)
-
 ## Estimated Time
 
 I anticipate spending approximately 5 minutes discussing the outlined features, technology stack updates, challenges, and justifications with the interviewer.
