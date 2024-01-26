@@ -21,8 +21,8 @@ const AppRouter = createBrowserRouter([
       },
       {
         path: "/results",
-        element: <Results />
-      }
+        element: <Results />,
+      },
     ],
   },
 ]);
