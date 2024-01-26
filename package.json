@@ -1,6 +1,5 @@
 {
   "name": "youtube-clone",
-  "homepage": "https://imlakshaychauhan.github.io/youtube-clone",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
